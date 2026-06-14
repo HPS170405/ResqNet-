@@ -1,0 +1,133 @@
+{
+  "name": "ResqNet Disaster Alerts & Notification Workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "disaster-alert",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        250,
+        350
+      ],
+      "id": "webhook-disaster-alert",
+      "name": "Incident Webhook Receiver"
+    },
+    {
+      "parameters": {
+        "channel": "#emergency-coordination",
+        "text": "=🚨 *URGENT SOS DISPATCH ALERT* 🚨\n\n*Incident ID:* {{ $json.body.incidentId }}\n*Severity:* {{ $json.body.damageLevel.toUpperCase() }}\n*Urgency:* {{ $json.body.urgency.toUpperCase() }}\n*Extracted Victim Count:* {{ $json.body.victimCount }}\n\n*Description:* {{ $json.body.description }}\n*Coordinates:* [{{ $json.body.location[0] }}, {{ $json.body.location[1] }}]\n\n_System Status: AI agents have dispatched responders. Real-time tracking is active._",
+        "otherOptions": {}
+      },
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2,
+      "position": [
+        500,
+        200
+      ],
+      "id": "slack-alert",
+      "name": "Send Slack Notification",
+      "credentials": {
+        "slackApi": {
+          "id": "slack-mock-creds-id",
+          "name": "Slack Account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "from": "+1234567890",
+        "to": "+1987654321",
+        "message": "=⚠️ ResqNet Emergency: A critical {{ $json.body.urgency }} incident is reported at coordinates [{{ $json.body.location[0] }}, {{ $json.body.location[1] }}]. Volunteers with skills ({{ $json.body.requiredSupplies.join(', ') }}) are requested immediately. Access your dashboard."
+      },
+      "type": "n8n-nodes-base.twilio",
+      "typeVersion": 1,
+      "position": [
+        500,
+        350
+      ],
+      "id": "twilio-sms",
+      "name": "Twilio SMS Responder Alert",
+      "credentials": {
+        "twilioApi": {
+          "id": "twilio-mock-creds-id",
+          "name": "Twilio Account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "your-google-sheet-id-here",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "Sheet1",
+          "mode": "name"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Incident ID": "={{ $json.body.incidentId }}",
+            "Urgency": "={{ $json.body.urgency }}",
+            "Damage Level": "={{ $json.body.damageLevel }}",
+            "Coordinates": "={{ $json.body.location.toString() }}",
+            "Victims": "={{ $json.body.victimCount }}",
+            "Description": "={{ $json.body.description }}",
+            "Timestamp": "={{ $json.body.timestamp }}"
+          }
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4,
+      "position": [
+        500,
+        500
+      ],
+      "id": "gsheet-log",
+      "name": "Log to Google Sheets",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "gsheets-mock-creds-id",
+          "name": "Google Sheets Account"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Incident Webhook Receiver": {
+      "main": [
+        [
+          {
+            "node": "Send Slack Notification",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Twilio SMS Responder Alert",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Log to Google Sheets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {},
+  "staticData": null,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "pinData": {}
+}

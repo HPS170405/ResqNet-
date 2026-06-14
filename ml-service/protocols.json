@@ -1,0 +1,24 @@
+{
+  "protocols": [
+    {
+      "topic": "Floods & Water Emergencies",
+      "keywords": ["flood", "flooding", "water", "drown", "boat", "submerged", "rain", "storm"],
+      "content": "Official Protocol for Flooding:\n1. Evacuate low-lying areas immediately. Move to high ground or the upper levels of structurally safe buildings.\n2. Do not walk, swim, or drive through floodwaters. Just six inches of moving water can knock you down, and two feet can sweep your car away.\n3. Turn off utilities at the main switches if safe to do so. Avoid contacting electrical equipment if you are wet or standing in water.\n4. Avoid contact with floodwater, which may be contaminated with sewage, chemicals, or live electrical currents.\n5. If trapped on a roof or upper floor, signal rescuers using flashlights, colored clothing, or sound. Do not climb into enclosed attics; you could get trapped by rising water."
+    },
+    {
+      "topic": "Fires & Smoke Inhalation",
+      "keywords": ["fire", "smoke", "burn", "flame", "explosion", "suffocate"],
+      "content": "Official Protocol for Fires:\n1. If a fire starts in a building, evacuate immediately. Do not use elevators under any circumstances.\n2. Feel doors with the back of your hand before opening them. If the door is hot, do not open it; seek an alternate escape route.\n3. Crawl low under smoke to escape. The cleanest air is close to the floor.\n4. If your clothes catch fire, Stop, Drop, and Roll. Cover your face with your hands and roll back and forth to extinguish flames.\n5. If trapped inside a room, close all doors, pack wet cloth or tape around cracks to seal out smoke, and call emergency services, describing your exact room number and location."
+    },
+    {
+      "topic": "Earthquakes & Structural Collapse",
+      "keywords": ["earthquake", "shake", "tremor", "collapse", "rubble", "trapped", "debris", "structure"],
+      "content": "Official Protocol for Earthquakes & Collapses:\n1. If indoors, Drop, Cover, and Hold On. Get under a sturdy desk or table, cover your head and neck, and hold on to the furniture leg.\n2. If outdoors, move to an open area away from buildings, streetlights, utility wires, and trees.\n3. If driving, pull over safely to an open spot, stop, and stay inside the vehicle. Avoid stopping on or under bridges, overpasses, or power lines.\n4. Post-quake, check for structural cracks, gas leaks, and fire hazards. Do not turn light switches on or off if a gas leak is suspected.\n5. If trapped under rubble: cover your mouth with clothing to filter dust, avoid screaming to conserve oxygen, and tap on pipes or walls so rescuers can locate you."
+    },
+    {
+      "topic": "First Aid & Trauma Stabilization",
+      "keywords": ["first aid", "medical", "fracture", "bleed", "injury", "unconscious", "cpr", "head injury", "breath", "wound"],
+      "content": "Official Medical First Aid Protocol:\n1. Severe Bleeding: Apply direct pressure to the wound with a clean cloth. Elevate the injured limb above heart level if possible. Do not remove saturated dressings; add more on top.\n2. Fractures & Breaks: Immobilize the injured area using splints (improvised with rolled newspapers, boards, or sticks) and bandages. Do not attempt to realign the bone.\n3. Unconsciousness / CPR: Check for responsiveness and breathing. If unresponsive and not breathing, start CPR immediately: 30 chest compressions (2 inches deep, 100-120 per minute) followed by 2 rescue breaths.\n4. Burns: Flush minor burns with cool, running water for 10-15 minutes. Cover with a sterile, non-adhesive bandage. Do not apply butter, oil, or ice to severe burns.\n5. Head/Spine Injury: Keep the victim completely still. Do not move their head or neck unless they are in immediate danger of fire or drowning."
+    }
+  ]
+}
